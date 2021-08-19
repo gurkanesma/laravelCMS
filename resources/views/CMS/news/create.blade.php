@@ -15,7 +15,7 @@
                     <form class="form-horizontal form-label-left" action="#" method="post" enctype="multipart/form-data">
 
                         <div class="form-group">
-                            <h2>New Title</h2>
+                            <h2>New Image</h2>
                             <div class="col-sm-12">
                                 <input type="file"   name="image" class="btn btn-default btn-sm" title="Upload New Image">
                             </div>
@@ -43,3 +43,18 @@
         </div>
     </div>
 @endsection
+
+@section('scripts')
+<script src="{{asset('CMS/vendors/summernote/summernote.js')}}" ></script>
+
+    <script>
+       $(document).ready(function (){
+           $('#summernote').summernote();
+       });
+    </script>
+
+@endsection
+
+@section('styles')
+    <link href="{{asset('CMS/vendors/summernote/summernote.css')}}" rel="stylesheet" type="text/css">
+    @endsection

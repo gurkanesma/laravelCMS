@@ -25,6 +25,8 @@
     <link href="{{asset('CMS/vendors/bootstrap-daterangepicker/daterangepicker.css')}}" rel="stylesheet">
     <!-- Custom Theme Style -->
     <link href="{{asset('CMS/build/css/custom.min.css')}}" rel="stylesheet">
+    <!-- Summernote Editor -->
+    @yield('styles')
 </head>
 
 <body class="nav-md">
@@ -162,6 +164,8 @@
 <script src="{{asset('CMS/vendors/bootstrap-daterangepicker/daterangepicker.js')}}"></script>
 <!-- Custom Theme Scripts -->
 <script src="{{asset('CMS/build/js/custom.min.js')}}"></script>
+<!-- Summernote Editor -->
+@yield('scripts')
 </body>
 </html>
 
