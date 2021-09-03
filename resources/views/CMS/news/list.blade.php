@@ -29,9 +29,9 @@
                             @php $i=1 @endphp
                             @foreach($news as $new)
                             <tr>
-                                <td style="width: 5%"></td>
+                                <td style="width: 5%">{{$i}}</td>
                                 <td style="width: 40%">
-                                    <a></a>
+                                    <a>{{$new->title}}</a>
                                 </td>
                                 <td style="width: 10%">
                                     <small>{{$new->created_at}}</small>
@@ -40,8 +40,8 @@
                                     <small>{{$new->updated_at}}</small>
                                 </td>
                                 <td style="width: 15%">
-                                    <a href="#" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit </a>
-                                    <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete </a>
+                                    <a href={{route('CMS.news.edit',$new->id)}} class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit </a>
+                                    <a href={{route('CMS.news.remove',$new->id)}} class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete </a>
                                 </td>
                             </tr>
                             @php $i=$i+1; @endphp
