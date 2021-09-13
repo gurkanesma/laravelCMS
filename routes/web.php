@@ -23,12 +23,14 @@ Route::get('/exit', function (){\Illuminate\Support\Facades\Auth::logout();
     return redirect()->route('login');
 })->name('log_out');
 
-/*
- * Burada bi şart var ona göre alt kısmı yapıyor. Şart yanlış olduğu için home kısmını çağırmıyo
- *
- * */
+Route::get('/','App\Http\Controllers\Front\homeController@index')->name('main');
+Route::get('/archive', 'App\Http\Controllers\Front\newsController@index')->name('Front.archive.index');
+Route::get('/archive{id}','App\Http\Controllers\Front\newsController@view')->name('Front.archive.view');
+Route::get('/page/{id}','App\Http\Controllers\Front\homeController@page')->name('Front.page');
+Route::get('/spage/{id}','App\Http\Controllers\Front\homeController@spage')->name('Front.spage');
 
-// Muhtemelen oturum açıksa sol menüyüde getiren satır
+
+//  oturum açıksa sol menüyüde getiren satır.
 Route::group(['prefix'=> 'panel', 'middleware' => 'auth'], function () {
 
     // Anasayfayı getirir.
@@ -36,6 +38,8 @@ Route::group(['prefix'=> 'panel', 'middleware' => 'auth'], function () {
         return view('CMS.home');})->name('CMS.home');
 
     Route::group(['prefix'=>'menu'],function(){
+
+
         Route::get('/','App\Http\Controllers\Cms\menusController@index')->name ('CMS.menus.list');
         Route::get('/create','App\Http\Controllers\Cms\menusController@create')->name('CMS.menus.create');
         Route::post('/create_post','App\Http\Controllers\Cms\menusController@create_post')->name('CMS.menus.create_post');
