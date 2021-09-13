@@ -15,4 +15,26 @@ class homeController extends Controller
         View::share('news',$news); //$news dğişkenini index.blade.php view'i ile paylaşıyoruz.
         return view('Front.Home.index');
     }
+    public function page($id)
+    {
+        $menus=Menus::orderBy('order')->get();
+        View::share('menus',$menus);
+
+        $menu=Menus::find($id);
+        View::share('menu',$menu);
+
+        return view('Front.Layouts.page');
+    }
+
+    public function spage($id)
+    {
+        $menus=Menus::orderBy('order')->get();
+        View::share('menus',$menus);
+
+        $menu=SubMenus::find($id);
+        View::share('menu',$menu);
+
+        return view('Front.Layouts.subpage');
+
+    }
 }
